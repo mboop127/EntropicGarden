@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnww02fwd0g1k"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_5ow8i"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5ow8i")
+cam_spd = null
+
+[node name="World_Timer" type="Timer" parent="."]
+wait_time = 0.001
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(20411, -470)
+zoom = Vector2(0.8, 0.8)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Fertility_Container" type="Node2D" parent="."]
+visible = false
+
+[node name="Heat_Container" type="Node2D" parent="."]
+visible = false
+
+[node name="Gravity_Container" type="Node2D" parent="."]
+visible = false
+
+[node name="Light_Container" type="Node2D" parent="."]
+visible = false
+
+[connection signal="timeout" from="World_Timer" to="." method="_on_world_timer_timeout"]

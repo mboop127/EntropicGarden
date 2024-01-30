@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://c62x1dakbni77"]
+
+[ext_resource type="Script" path="res://Scripts/Plant_Part_Template.gd" id="1_r210i"]
+[ext_resource type="Texture2D" uid="uid://c71afjeeh7myy" path="res://Sprites/Leaf_1.png" id="2_7g0i7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2k8r"]
+size = Vector2(16, 7)
+
+[node name="Plant_Part" type="Node2D"]
+script = ExtResource("1_r210i")
+part_type = "Leaf"
+growth_cost = 5.0
+energy_cost_per_tick = 1.0
+energy_production_type = {
+"Heat": 0,
+"Light": 10,
+"Soil": 0
+}
+ideal_heat = 5.0
+
+[node name="Part_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_7g0i7")
+
+[node name="Rigid_Body" type="RigidBody2D" parent="."]
+
+[node name="Collision_Shape" type="CollisionShape2D" parent="Rigid_Body"]
+position = Vector2(-6, 3.5)
+shape = SubResource("RectangleShape2D_j2k8r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Collision_Shape2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6, 3.5)
+shape = SubResource("RectangleShape2D_j2k8r")

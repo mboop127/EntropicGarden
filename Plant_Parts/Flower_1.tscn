@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmjvcf7ptur8j"]
+
+[ext_resource type="Script" path="res://Scripts/Plant_Part_Template.gd" id="1_mqy0i"]
+[ext_resource type="Texture2D" uid="uid://b4snuqh8aaxk0" path="res://Sprites/Flower_1.png" id="2_vmjao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2k8r"]
+size = Vector2(24, 24)
+
+[node name="Plant_Part" type="Node2D"]
+script = ExtResource("1_mqy0i")
+part_type = "Flower"
+growth_cost = 10.0
+energy_cost_per_tick = 2.0
+reproduction_cost = 40.0
+reproduction_range = 2.0
+
+[node name="Part_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vmjao")
+
+[node name="Rigid_Body" type="RigidBody2D" parent="."]
+
+[node name="Collision_Shape3" type="CollisionShape2D" parent="Rigid_Body"]
+shape = SubResource("RectangleShape2D_j2k8r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Collision_Shape2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j2k8r")

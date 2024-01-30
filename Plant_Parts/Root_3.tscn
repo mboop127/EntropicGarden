@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxxm1gfmkvujf"]
+
+[ext_resource type="Script" path="res://Scripts/Plant_Part_Template.gd" id="1_lbxct"]
+[ext_resource type="Texture2D" uid="uid://do4p8j3x0qc18" path="res://Sprites/Root_3.png" id="2_fvf6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2k8r"]
+size = Vector2(18, 20)
+
+[node name="Plant_Part" type="Node2D"]
+script = ExtResource("1_lbxct")
+part_type = "Root"
+growth_cost = 8.0
+energy_cost_per_tick = 3.0
+energy_production_type = {
+"Heat": 0,
+"Light": 0,
+"Soil": 3
+}
+stability = 10.0
+ideal_heat = 5.0
+metadata/_edit_lock_ = true
+
+[node name="Part_Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("2_fvf6e")
+metadata/_edit_lock_ = true
+
+[node name="Rigid_Body" type="RigidBody2D" parent="."]
+position = Vector2(0, 15)
+metadata/_edit_lock_ = true
+
+[node name="Collision_Shape3" type="CollisionShape2D" parent="Rigid_Body"]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_j2k8r")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 15)
+metadata/_edit_lock_ = true
+
+[node name="Collision_Shape2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_j2k8r")
+metadata/_edit_lock_ = true
+
+[node name="Connector1" type="Node2D" parent="."]
+position = Vector2(-6, 14)
+
+[node name="Connector2" type="Node2D" parent="."]
+position = Vector2(9, 16)
+
+[node name="Connector3" type="Node2D" parent="."]
+position = Vector2(1, 12)

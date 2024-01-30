@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhnosnwwfkxe4"]
+
+[ext_resource type="Script" path="res://Scripts/Plant_Part_Template.gd" id="1_pbnjr"]
+[ext_resource type="Texture2D" uid="uid://b4ihn60t17hsm" path="res://Sprites/Stem_1.png" id="2_hok4o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2k8r"]
+size = Vector2(2, 32)
+
+[node name="Plant_Part" type="Node2D"]
+script = ExtResource("1_pbnjr")
+part_type = "Stem"
+growth_cost = 1.0
+energy_cost_per_tick = 0.5
+
+[node name="Part_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hok4o")
+
+[node name="Rigid_Body" type="RigidBody2D" parent="."]
+
+[node name="Collision_Shape" type="CollisionShape2D" parent="Rigid_Body"]
+shape = SubResource("RectangleShape2D_j2k8r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Collision_Shape2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j2k8r")
+
+[node name="Connector1" type="Node2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="Connector2" type="Node2D" parent="."]
+position = Vector2(0, -16)
